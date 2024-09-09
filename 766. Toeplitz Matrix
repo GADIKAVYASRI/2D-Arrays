@@ -1,0 +1,37 @@
+class Solution {
+    public boolean isValid(int[][] matrix,int x,int y){
+       int r=matrix.length;
+       int c=matrix[0].length;
+       boolean bool=true;
+       int i=x;
+       int j=y;
+       int temp=matrix[i][j];
+       while(i<r && j<c){
+        if(matrix[i][j]!=temp){
+            bool=false;
+        }
+        i++;
+        j++;
+       }
+        return bool;
+    }
+    public boolean isToeplitzMatrix(int[][] matrix) {
+        boolean bool=true;
+        int r=matrix.length;
+        int c=matrix[0].length;
+        for(int i=0;i<r;i++){
+            boolean temp=isValid(matrix,i,0);
+            if(!temp){
+                bool=false;
+            }
+        }
+        for(int j=0;j<c;j++){
+            boolean temp=isValid(matrix,0,j);
+            if(!temp){
+                bool=false;
+            }
+        }
+        
+        return bool;
+    }
+}
